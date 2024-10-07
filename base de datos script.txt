@@ -1,0 +1,29 @@
+CREATE TABLE persona (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(125) NOT NULL,
+  usuario varchar(125) NOT NULL,
+  pass varchar(127) NOT NULL,
+  rol varchar(10) not null
+);
+
+CREATE TABLE propiedad (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  direccion VARCHAR(50) NOT NULL,
+  codigo_catastral VARCHAR(50) NOT NULL,
+  persona_id INT NOT NULL,
+  FOREIGN KEY (persona_id) REFERENCES persona(id)
+);
+
+INSERT INTO persona (nombre,usuario,pass,rol) VALUES
+  ('Juan Pérez', 'juan1',123456,1),
+  ('María Gómez', 'maria1', 123456,1),
+  ('Carlos Rodríguez', 'carlex2', 123456,1),
+  ('Ana Hernández','anix4',123456789,1),
+  ('Luis Díaz','admin',123456789,2);
+
+-- Insertar datos de ejemplo en la tabla "propiedad"
+INSERT INTO propiedad (direccion, codigo_catastral, persona_id) VALUES
+  ('Calle Principal 123', '12345', 1),
+  ('Avenida Central 456', '67890', 2),
+  ('Calle Secundaria 789', '54321', 3),
+  ('Avenida Norte 159', '98765', 4);
